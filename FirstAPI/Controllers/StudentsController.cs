@@ -27,5 +27,12 @@ namespace FirstAPI.Controllers
                 return Ok("Andrzejewski");
             return NotFound("Nie znaleziono studenta");
         }
+
+        [HttpGet("query")]
+        public string GetStudents(string orderBy)
+        {
+            return $"Kowalski, Malewski, Andrzejewski \nSortowanie={orderBy}";
+        }
+
     }
 }
