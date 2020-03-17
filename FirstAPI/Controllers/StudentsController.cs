@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FirstAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FirstAPI.Controllers
@@ -34,5 +35,11 @@ namespace FirstAPI.Controllers
             return $"Kowalski, Malewski, Andrzejewski \nSortowanie={orderBy}";
         }
 
+        [HttpPost]
+        public IActionResult CreateStudent(Student student)
+        {
+            student.IndexNumber = $"s{new Random().Next(1, 20000)}";
+            return Ok(student);
+        }
     }
 }
