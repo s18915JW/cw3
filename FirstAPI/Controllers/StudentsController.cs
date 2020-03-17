@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FirstAPI.DAL;
 using FirstAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,19 @@ namespace FirstAPI.Controllers
     [Route("api/students")]
     public class StudentsController : ControllerBase
     {
+        private readonly IDbService dbService;
+
+        public StudentsController(IDbService service)
+        {
+            dbService = service;
+        }
+
+        [HttpGet("mock")]
+        public IActionResult GetStudentsMock()
+        {
+            return Ok(dbService.GetStudents());
+        }
+
         [HttpGet]
         public string GetStudents()
         {
